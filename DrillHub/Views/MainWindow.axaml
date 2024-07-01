@@ -1,0 +1,120 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="450"
+        xmlns:vm="using:DrillHub.ViewModels"
+		xmlns:dialogs="using:AvaloniaDialogs.Views"
+        x:Class="DrillHub.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        WindowStartupLocation="CenterScreen"
+		ExtendClientAreaToDecorationsHint="True"
+        Icon="/Assets/favicon.ico">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<SplitView Name="SideBarMenu" 
+			   Margin="" Grid.Row="1"
+			   IsPaneOpen="true"
+			   CompactPaneLength="48"
+			   DisplayMode="CompactInline"
+			   OpenPaneLength="200"
+			   PaneBackground="{DynamicResource ColorSideBarMenuBrush}">
+		<SplitView.Pane>
+			<Grid RowDefinitions="auto auto">
+				<Grid ColumnDefinitions="auto auto"  Background="{DynamicResource ColorTitleBrush}">
+					<StackPanel Width="48" Height="35" >
+						<Image Width="35" Source="/Assets/_HGHGJ.png"/>
+					</StackPanel>
+					<TextBlock Grid.Column="1"
+							   Foreground="#0070c0"
+							   Margin="10 0"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center">
+						DrillHub 1.01
+					</TextBlock>
+				</Grid>
+				<StackPanel Grid.Row="1">
+					<Grid ColumnDefinitions="auto">
+						<ListBox Grid.Column="0" Name="NavigationMenu" Margin="-1 0 ">
+							<ListBox.Styles>
+								<Style Selector="ListBoxItem">
+									<Setter Property="CornerRadius" Value="0"></Setter>
+									<Setter Property="Margin" Value="0 -2"></Setter>
+									
+								</Style>
+							</ListBox.Styles>
+							<ListBox.Items>
+								<Grid ColumnDefinitions="auto auto" Name="Item1">
+									<ui:FAPathIcon Margin="-3 0" Grid.Column="0" Width="20" Height="20"
+												   Data="M19.25,11.0016855 C20.2164983,11.0016855 21,11.7851872 21,12.7516855 L21,19.2516855 C21,20.2181839 20.2164983,21.0016855 19.25,21.0016855 L14.75,21.0016855 C13.7835017,21.0016855 13,20.2181839 13,19.2516855 L13,12.7516855 C13,11.7851872 13.7835017,11.0016855 14.75,11.0016855 L19.25,11.0016855 Z M9.26819698,15.0141011 C10.2346953,15.0141011 11.018197,15.7976028 11.018197,16.7641011 L11.018197,19.2516855 C11.018197,20.2181839 10.2346953,21.0016855 9.26819698,21.0016855 L4.75378933,21.0016855 C3.78729102,21.0016855 3.00378933,20.2181839 3.00378933,19.2516855 L3.00378933,16.7641011 C3.00378933,15.7976028 3.78729102,15.0141011 4.75378933,15.0141011 L9.26819698,15.0141011 Z M19.25,12.5016855 L14.75,12.5016855 C14.6119288,12.5016855 14.5,12.6136144 14.5,12.7516855 L14.5,19.2516855 C14.5,19.3897567 14.6119288,19.5016855 14.75,19.5016855 L19.25,19.5016855 C19.3880712,19.5016855 19.5,19.3897567 19.5,19.2516855 L19.5,12.7516855 C19.5,12.6136144 19.3880712,12.5016855 19.25,12.5016855 Z M9.26819698,16.5141011 L4.75378933,16.5141011 C4.61571814,16.5141011 4.50378933,16.6260299 4.50378933,16.7641011 L4.50378933,19.2516855 C4.50378933,19.3897567 4.61571814,19.5016855 4.75378933,19.5016855 L9.26819698,19.5016855 C9.40626816,19.5016855 9.51819698,19.3897567 9.51819698,19.2516855 L9.51819698,16.7641011 C9.51819698,16.6260299 9.40626816,16.5141011 9.26819698,16.5141011 Z M9.25378933,3 C10.2202876,3 11.0037893,3.78350169 11.0037893,4.75 L11.0037893,11.25 C11.0037893,12.1681734 10.2966791,12.9211923 9.39731654,12.9941988 L9.25378933,13 L4.75378933,13 C3.78729102,13 3.00378933,12.2164983 3.00378933,11.25 L3.00378933,4.75 C3.00378933,3.78350169 3.78729102,3 4.75378933,3 L9.25378933,3 Z M9.25378933,4.5 L4.75378933,4.5 C4.61571814,4.5 4.50378933,4.61192881 4.50378933,4.75 L4.50378933,11.25 C4.50378933,11.3880712 4.61571814,11.5 4.75378933,11.5 L9.25378933,11.5 L9.31111204,11.4933973 C9.42155592,11.4674868 9.50378933,11.3683467 9.50378933,11.25 L9.50378933,4.75 C9.50378933,4.61192881 9.39186052,4.5 9.25378933,4.5 Z M19.25,3 C20.2164983,3 21,3.78350169 21,4.75 L21,7.25 C21,8.21649831 20.2164983,9 19.25,9 L14.75,9 C13.7835017,9 13,8.21649831 13,7.25 L13,4.75 C13,3.78350169 13.7835017,3 14.75,3 L19.25,3 Z M14.75,4.5 C14.6119288,4.5 14.5,4.61192881 14.5,4.75 L14.5,7.25 C14.5,7.38807119 14.6119288,7.5 14.75,7.5 L19.25,7.5 C19.3880712,7.5 19.5,7.38807119 19.5,7.25 L19.5,4.75 C19.5,4.61192881 19.3880712,4.5 19.25,4.5 L14.75,4.5 Z" />
+									<TextBlock Grid.Column="1" Margin="16 15">
+										Монитор состояния
+									</TextBlock>
+								</Grid>
+
+							</ListBox.Items>
+							<ListBox.Items>
+								<Grid ColumnDefinitions="auto auto" Name="Item2">
+									<ui:FAPathIcon Margin="-3 0" Grid.Column="0" Width="20" Height="20"
+												   Data="M14 1.99774C11.6528 1.99774 9.75 3.90053 9.75 6.24774C9.75 8.33903 11.2605 10.0775 13.25 10.4318V13.5H8.75C7.50736 13.5 6.5 14.5074 6.5 15.75V17.566C4.51049 17.9202 3 19.6587 3 21.75C3 24.0972 4.90279 26 7.25 26C9.59721 26 11.5 24.0972 11.5 21.75C11.5 19.6587 9.98951 17.9202 8 17.566V15.75C8 15.3358 8.33579 15 8.75 15H19.25C19.6642 15 20 15.3358 20 15.75V17.566C18.0105 17.9202 16.5 19.6587 16.5 21.75C16.5 24.0972 18.4028 26 20.75 26C23.0972 26 25 24.0972 25 21.75C25 19.6587 23.4895 17.9202 21.5 17.566V15.75C21.5 14.5074 20.4926 13.5 19.25 13.5H14.75V10.4318C16.7395 10.0775 18.25 8.33904 18.25 6.24774C18.25 3.90053 16.3472 1.99774 14 1.99774ZM11.25 6.24774C11.25 4.72896 12.4812 3.49774 14 3.49774C15.5188 3.49774 16.75 4.72896 16.75 6.24774C16.75 7.76652 15.5188 8.99774 14 8.99774C12.4812 8.99774 11.25 7.76652 11.25 6.24774ZM4.5 21.75C4.5 20.2312 5.73122 19 7.25 19C8.76878 19 10 20.2312 10 21.75C10 23.2688 8.76878 24.5 7.25 24.5C5.73122 24.5 4.5 23.2688 4.5 21.75ZM20.75 19C22.2688 19 23.5 20.2312 23.5 21.75C23.5 23.2688 22.2688 24.5 20.75 24.5C19.2312 24.5 18 23.2688 18 21.75C18 20.2312 19.2312 19 20.75 19Z" />
+									<TextBlock Grid.Column="1" Margin="16 15">
+										Источники данных
+									</TextBlock>
+								</Grid>
+
+							</ListBox.Items>
+							<ListBox.Items>
+								<Grid ColumnDefinitions="auto auto" Name="Item3">
+									<ui:ImageIcon Margin="-3 0" Grid.Column="0" Width="20" Height="20">
+										<DrawingImage>
+											<DrawingGroup>
+												<GeometryDrawing Brush="{DynamicResource TextFillColorPrimaryBrush}"
+																 Geometry="M 13,13 C 12.577726,13 12.156163,13.160231 11.833984,13.482422 L 2.4824219,22.833984 2.3242188,23.017578 C 1.8449479,23.663499 1.896627,24.580156 2.4824219,25.166016 L 11.833984,34.517578 12.017578,34.675781 C 12.663521,35.155161 13.580222,35.103438 14.166016,34.517578 14.810375,33.873198 14.810375,32.827755 14.166016,32.183594 L 5.984375,24 14.166016,15.816406 14.326172,15.630859 C 14.805443,14.984917 14.751811,14.068194 14.166016,13.482422 13.843837,13.160231 13.422274,13 13,13 Z M 34.884766,13.003906 C 34.501635,13.030534 34.126804,13.189524 33.833984,13.482422 33.189603,14.12678 33.189603,15.172026 33.833984,15.816406 L 42.015625,24 33.833984,32.183594 33.673828,32.369141 C 33.194448,33.015062 33.248123,33.931938 33.833984,34.517578 34.478364,35.161958 35.521636,35.161958 36.166016,34.517578 L 45.517578,25.166016 45.675781,24.982422 C 46.155162,24.336502 46.103439,23.419624 45.517578,22.833984 L 36.166016,13.482422 35.982422,13.324219 C 35.659461,13.084572 35.267896,12.977278 34.884766,13.003906 Z" />
+												<GeometryDrawing Brush="{DynamicResource AccentFillColorDefaultBrush}"
+																 Geometry="M 15.344371,39.275058 29.644335,7.3750199 C 30.017235,6.5434859 30.993375,6.1715759 31.824975,6.5443219 32.587276,6.8860259 32.963256,7.7348519 32.733576,8.5144448 L 32.655696,8.7249188 18.355645,40.624979 C 17.982899,41.45658 17.006604,41.82838 16.17507,41.4557 15.412813,41.114039 15.036789,40.265059 15.266535,39.485599 L 15.344371,39.275058 29.644335,7.3750199 Z" />
+											</DrawingGroup>
+										</DrawingImage>
+									</ui:ImageIcon>
+									<TextBlock Grid.Column="1" Margin="16 15">
+										Объекты WITSML
+									</TextBlock>
+								</Grid>
+
+							</ListBox.Items>
+						</ListBox>
+					</Grid>
+				</StackPanel>
+			</Grid>
+		</SplitView.Pane>
+
+		<Grid RowDefinitions="auto *">
+			<StackPanel Grid.Row="0"
+						Margin="0" Height="35"
+						Background="{DynamicResource ColorTitleBrush}"
+						Name="TopPanelTitleBar">
+				<Grid ColumnDefinitions="auto * auto auto">
+					<Button Grid.Column="0"
+							Name="btnSidebarOpen"
+							Click="btnShowLog_OnClick"
+							BorderThickness="0"
+							CornerRadius="0"
+							Background="Transparent"
+							Height="35"
+							Width="35"
+							HorizontalAlignment="Left">
+						<ui:FAPathIcon Data="M2 4.5C2 4.22386 2.22386 4 2.5 4H17.5C17.7761 4 18 4.22386 18 4.5C18 4.77614 17.7761 5 17.5 5H2.5C2.22386 5 2 4.77614 2 4.5Z M2 9.5C2 9.22386 2.22386 9 2.5 9H17.5C17.7761 9 18 9.22386 18 9.5C18 9.77614 17.7761 10 17.5 10H2.5C2.22386 10 2 9.77614 2 9.5Z M2.5 14C2.22386 14 2 14.2239 2 14.5C2 14.7761 2.22386 15 2.5 15H17.5C17.7761 15 18 14.7761 18 14.5C18 14.2239 17.7761 14 17.5 14H2.5Z" />
+					</Button>
+				</Grid>
+			</StackPanel>
+			<DockPanel Grid.Row="1"
+					   HorizontalAlignment="Stretch"
+					   VerticalAlignment="Stretch">
+				<ui:Frame Background="{DynamicResource ColorFrameBrush}" Name="MainContent" />
+			</DockPanel>
+		</Grid>
+	</SplitView>
+</Window>

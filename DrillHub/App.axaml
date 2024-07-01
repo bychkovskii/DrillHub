@@ -1,0 +1,54 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="DrillHub.App"
+             xmlns:local="using:DrillHub"
+             xmlns:sty="using:FluentAvalonia.Styling"
+             RequestedThemeVariant="Dark">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Light">
+
+					<Color x:Key="ColorTitleBrush">#33000000</Color>
+					<Color x:Key="ColorSideBarMenuBrush">#333333</Color>
+					<Color x:Key="ColorTopBarBrush">#252526</Color>
+					<Color x:Key="ColorFrameBrush">#1e1e1e</Color>
+					<Color x:Key="SystemAccentColor">#0070c0</Color>
+
+				</ResourceDictionary>
+				<ResourceDictionary x:Key="Dark">
+
+					<Color x:Key="ColorTitleBrush">#3c3c3c</Color>
+					<Color x:Key="ColorSideBarMenuBrush">#333333</Color>
+					<Color x:Key="ColorTopBarBrush">#252526</Color>
+					<Color x:Key="ColorFrameBrush">#1e1e1e</Color>
+					<Color x:Key="SystemAccentColor">#0070c0</Color>
+
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+		
+		<Color x:Key="SystemAccentColor">#0070c0</Color>
+
+		<!-- Почему то это активная цветовая схема -->
+		<Color x:Key="SystemAccentColorDark1">#0070c0</Color>
+		<Color x:Key="SystemAccentColorDark2">#0070c0</Color>
+		<Color x:Key="SystemAccentColorDark3">#0070c0</Color>
+		<Color x:Key="SystemAccentColorLight1">#0070c0</Color>
+		<Color x:Key="SystemAccentColorLight2">#0070c0</Color>
+		<Color x:Key="SystemAccentColorLight3">#0070c0</Color>
+
+
+	</Application.Resources>
+
+	<Application.Styles>
+		<sty:FluentAvaloniaTheme PreferUserAccentColor="True" />    
+		<StyleInclude Source="avares://DrillHub/Assets/Icons.axaml" />
+	</Application.Styles>
+</Application>

@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="using:FluentAvalonia.UI.Controls"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
+             x:Class="DrillHub.Views.SensorDataTransferTypeDialog">
+	<StackPanel Width="390">
+		<TabStrip CornerRadius="0" HorizontalAlignment="Center"
+		  Theme="{StaticResource AlternateTabStripTheme}"
+		  ItemContainerTheme="{StaticResource AlternateTabStripItemTheme}"
+		  Margin="0 12"
+		  Name="TabHost">
+			<TabStripItem CornerRadius="0" Content="TCP" Classes="left" />
+			<TabStripItem CornerRadius="0" Content="OPC" />
+			<TabStripItem CornerRadius="0" Content="ETP" />
+			<TabStripItem CornerRadius="0" Content="UDP" />
+			<TabStripItem CornerRadius="0" Content="HTTP" />
+			<TabStripItem CornerRadius="0" Content="MODBUS"  Classes="right" IsEnabled="False"/>
+		</TabStrip>
+
+		<ui:Frame Name="ColorsPageFrame" HorizontalAlignment="Center"
+                  IsNavigationStackEnabled="False">
+
+		</ui:Frame>
+
+	
+	</StackPanel>
+</UserControl>

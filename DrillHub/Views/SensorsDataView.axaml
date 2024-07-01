@@ -1,0 +1,183 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:ui="using:FluentAvalonia.UI.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vm="using:DrillHub.ViewModels"
+             x:Class="DrillHub.Views.SensorsDataView"
+			 x:DataType="vm:SensorsDataViewModel">
+
+	<Design.DataContext>
+		<vm:SensorsDataViewModel/>
+	</Design.DataContext>
+
+	<Grid RowDefinitions="auto *">
+		<StackPanel Grid.Row="0">
+			<Grid ColumnDefinitions="auto auto * auto auto" Background="{DynamicResource ColorFrameBrush}">
+				<StackPanel Grid.Column="0"/>
+				<TextBlock Grid.Column="1" Margin="15 5">ИСТОЧНИКИ ДАННЫХ</TextBlock>
+				<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+							Grid.Column="2" Background="{DynamicResource ColorTopBarBrush}">
+					<Button Grid.Column="3" VerticalAlignment="Top" CornerRadius="0" Click="ShowInputDialogAsync" HorizontalAlignment="Right">
+						<ui:FAPathIcon Margin="-5 0" Grid.Column="0" Width="15" Height="15"
+						   Data="M14,2 C20.627417,2 26,7.372583 26,14 C26,20.627417 20.627417,26 14,26 C7.372583,26 2,20.627417 2,14 C2,7.372583 7.372583,2 14,2 Z M14,3.5 C8.20101013,3.5 3.5,8.20101013 3.5,14 C3.5,19.7989899 8.20101013,24.5 14,24.5 C19.7989899,24.5 24.5,19.7989899 24.5,14 C24.5,8.20101013 19.7989899,3.5 14,3.5 Z M14,8 C14.4142136,8 14.75,8.33578644 14.75,8.75 L14.75,13.25 L19.25,13.25 C19.6642136,13.25 20,13.5857864 20,14 C20,14.4142136 19.6642136,14.75 19.25,14.75 L14.75,14.75 L14.75,19.25 C14.75,19.6642136 14.4142136,20 14,20 C13.5857864,20 13.25,19.6642136 13.25,19.25 L13.25,14.75 L8.75,14.75 C8.33578644,14.75 8,14.4142136 8,14 C8,13.5857864 8.33578644,13.25 8.75,13.25 L13.25,13.25 L13.25,8.75 C13.25,8.33578644 13.5857864,8 14,8 Z" />
+					</Button>
+
+				</StackPanel>
+			</Grid>
+		</StackPanel>
+		<SplitView Name="LogPane" Grid.Row="1"
+				   PaneBackground="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+				   PanePlacement="Right"
+				   DisplayMode="Inline"
+				   OpenPaneLength="200"
+				   CompactPaneLength="250">
+			<SplitView.Content>
+				<Grid RowDefinitions="auto auto auto auto" Margin="10">
+					<StackPanel Grid.Row="0" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}">
+						<Grid ColumnDefinitions="auto auto *">
+							<TextBlock Grid.Column="0"
+									   Margin="15 6"
+									   FontSize="16"
+									   FontWeight="Medium">
+								Данные ННБ (WITS0).
+							</TextBlock>
+							<ui:HyperlinkButton CornerRadius="0" Grid.Column="1" Margin="-15" Click="ShowInputDialogAsync">
+								Протокол передачи: TCP
+							</ui:HyperlinkButton>
+
+							<Button Grid.Column="3" CornerRadius="0" Margin="0" HorizontalAlignment="Right"
+									Background="Transparent"
+									BorderBrush="Transparent">
+								<Button.Content>
+									<ui:FAPathIcon Width="5" Height="15"
+												   Data="M24.002 15.75C22.207 15.75 20.752 14.2949 20.752 12.5C20.752 10.7051 22.207 9.25 24.002 9.25C25.7969 9.25 27.252 10.7051 27.252 12.5C27.252 14.2949 25.7969 15.75 24.002 15.75Z M24.002 27.25C22.207 27.25 20.752 25.7949 20.752 24C20.752 22.2051 22.207 20.75 24.002 20.75C25.7969 20.75 27.252 22.2051 27.252 24C27.252 25.7949 25.7969 27.25 24.002 27.25Z M20.752 35.5C20.752 37.2949 22.207 38.75 24.002 38.75C25.7969 38.75 27.252 37.2949 27.252 35.5C27.252 33.7051 25.7969 32.25 24.002 32.25C22.207 32.25 20.752 33.7051 20.752 35.5Z" />
+								</Button.Content>
+								<Button.Flyout>
+									<ui:FAMenuFlyout Placement="BottomEdgeAlignedRight">
+										<ui:MenuFlyoutItem Text="Запустить" IconSource="Play"
+														   Name="btnStart"
+														   Click="btnStart_OnClick"
+														   IsEnabled="True"/>
+										<ui:MenuFlyoutItem Text="Остановить" IconSource="Stop"
+														   Name="btnStop"
+														   Click="btnStop_OnClick"
+														   IsEnabled="False"/>
+										<ui:MenuFlyoutItem Name="btnShowLog"
+														   Text="Лог данных" IconSource="ClipboardCode"
+														   Click="btnShowLog_OnClick"/>
+										<ui:MenuFlyoutItem Text="Удалить" IconSource="Delete" IsEnabled="False" />
+									</ui:FAMenuFlyout>
+								</Button.Flyout>
+							</Button>
+
+						</Grid>
+					</StackPanel>
+
+					<StackPanel Grid.Row="1" Background="{DynamicResource CardBackgroundFillColorSecondaryBrush}">
+
+						<WrapPanel Margin="0 5">
+							<Grid Name="WITSDataVidget" RowDefinitions="auto auto auto">
+								<StackPanel Grid.Row="0">
+									<Grid ColumnDefinitions="auto auto">
+										<StackPanel Grid.Column="0">
+											<TextBlock Margin="15 0" FontWeight="Light" >Ip-дрес:</TextBlock>
+											<TextBox Name="TxtBxServerIp"
+													 TextChanged="ipValidation"
+													 CornerRadius="0"
+													 Margin="10 5" Text="127.0.0.1" Width="200" HorizontalAlignment="Left"/>
+
+										</StackPanel>
+
+										<StackPanel Grid.Column="1">
+											<TextBlock Margin="15 0" FontWeight="Light" >Порт:</TextBlock>
+											<TextBox Name="TxtBxPort"
+													 TextChanged="portValidation"
+													 CornerRadius="0"
+													 Margin="10 5" Text="10003" Width="100" HorizontalAlignment="Left" />
+										</StackPanel>
+
+									</Grid>
+								</StackPanel>
+								<WrapPanel Grid.Row="1" Margin="0 ">
+									<TextBlock Margin="10 " FontWeight="Light" >
+										Тип источника
+									</TextBlock>
+									<RadioButton Name="IsServer" Content="Сервер"
+												 Checked="IsServer_IsCheckedChanged"
+												 Unchecked="IsServer_IsCheckedChanged"
+												 Margin="4" IsChecked="True" />
+									<RadioButton Name="IsClient" Content="Клиент"
+												 Checked="IsServer_IsCheckedChanged"
+												 Unchecked="IsServer_IsCheckedChanged"
+												 Margin="4" />
+								</WrapPanel>
+								<StackPanel Grid.Row="2" Margin="0 -10">
+									<Grid ColumnDefinitions="* *">
+										<ToggleSwitch Grid.Column="0" OffContent="Сервер ретрансляции" OnContent="Сервер ретрансляции"
+													  Name="TglSwchServer"
+													  IsChecked="true"
+													  Checked="TglSwchServer_Checked"
+													  Unchecked="TglSwchServer_Checked"
+													  Margin="10 0"
+													  HorizontalAlignment="Left"/>
+										<TextBox Grid.Column="1"
+												 Name="TxtBxServerPort"
+												 TextChanged="serverPortValidation"
+												 CornerRadius="0"
+												 Margin="10" IsEnabled="True" Text="10003" Width="100" HorizontalAlignment="Right" />
+									</Grid>
+								</StackPanel>
+
+							</Grid>
+								<StackPanel>
+									<Grid ColumnDefinitions="auto auto auto">
+										<ProgressBar Grid.Column="0"
+													 Orientation="Vertical"
+													 Name="StatusIndicator"
+													 CornerRadius="0"
+													 Margin="10"
+													 MinHeight="100"/>
+										<StackPanel Margin="10 20" Grid.Column="1">
+											<TextBlock Name="txtStatus" FontWeight="Light">Состояние</TextBlock>
+											<TextBlock Margin="0 10" FontWeight="Light" >Набор данных</TextBlock>
+											<TextBlock Margin="-4"> </TextBlock>
+											<CheckBox Margin="0 -18" IsEnabled="False">Сохранять WITSML</CheckBox>
+										</StackPanel>
+										
+										<StackPanel Margin="0 12" Grid.Column="3">
+											<Grid RowDefinitions="auto auto auto">
+												<TextBlock Grid.Row="0" Margin=" 5" Name="txtBlkStatus" Foreground="Gray">
+													Источник не подключен
+												</TextBlock>
+												<ProgressBar Grid.Row="1"
+															 Orientation="Horizontal"
+															 Name="ConnectionProgress"
+															 IsVisible="False"
+															 CornerRadius="0"
+															 Margin="-15"/>
+
+												<CheckBox Grid.Row="2" Margin="5 28">Сохранять LAS</CheckBox>
+											</Grid>
+										</StackPanel>
+										
+									</Grid>
+									
+								</StackPanel>
+						</WrapPanel>
+					</StackPanel>
+				</Grid>
+
+			</SplitView.Content>
+			<SplitView.Pane>
+				<ScrollViewer Name="scrllVwrLog" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+					<TextBlock Name="txtBlckLog"
+							   Margin="15"
+							   FontSize="12"/>
+				</ScrollViewer>
+			</SplitView.Pane>
+		</SplitView>
+	</Grid>
+
+</UserControl>

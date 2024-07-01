@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="340" d:DesignHeight="200"
+             x:Class="DrillHub.Vidgets.TransportTypeOPC">
+	<WrapPanel>
+		<StackPanel>
+			<TextBlock Margin="15 0" >Адрес источника::</TextBlock>
+			<TextBox Margin="10 10" HorizontalAlignment="Center"
+					 CornerRadius="0"
+					 Text="opc.tcp://127.0.0.1:10002/opcProducer" Width="320"/>
+		</StackPanel>
+	</WrapPanel>
+</UserControl>

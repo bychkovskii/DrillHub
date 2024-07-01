@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="340" d:DesignHeight="200"
+             x:Class="DrillHub.Vidgets.TransportTypeUDP">
+	<WrapPanel>
+		<StackPanel>
+			<TextBlock Margin="15 0" >Ip-дрес:</TextBlock>
+			<TextBox Name="TxtBxServerIp"
+					 CornerRadius="0"
+					 Margin="10 10" Text="127.0.0.1" Width="200" HorizontalAlignment="Left"/>
+		</StackPanel>
+		<StackPanel>
+			<TextBlock Margin="15 0" >Номер порта:</TextBlock>
+			<TextBox Name="TxtBxServerPort"
+					 CornerRadius="0"
+					 Margin="10 10" Text="10002" Width="100" HorizontalAlignment="Left" />
+		</StackPanel>
+
+	</WrapPanel>
+</UserControl>
